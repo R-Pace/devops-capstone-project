@@ -15,6 +15,7 @@ spec:
     - name: repo-url
     - name: branch
       default: main
+    - name: build-image              # <-- nuovo parametro aggiunto
   tasks:
     - name: init
       workspaces:
@@ -73,8 +74,8 @@ spec:
         name: buildah
         kind: ClusterTask
       params:
-      - name: IMAGE
-        value: "$(params.build-image)"
+        - name: IMAGE
+          value: "$(params.build-image)"
       runAfter:
         - tests
         - lint
